@@ -13,7 +13,10 @@ unsigned int quantity;
 int growing_rate;
 } Food;
 
-food grow_food(int& growing_rate);
+Food grow_food(int growing_rate);
+
+typedef struct Cell Cell;
+typedef struct Board Board;
 
 typedef struct Animal 
 {
@@ -25,24 +28,25 @@ Cell* grazing_area;
 Cell* breeding_area;
 } Animal;
 
-void graze(animal& an_animal, cell& a_cell);
-void breed(animal& an_animal, cell& a_cell);
+Board graze(Animal an_animal, Cell a_cell);
+Board breed(Animal an_animal, Cell a_cell);
 
-typedef struct Cell 
+struct Cell 
 {
-const Position position;
+Position position;
 Animal animal;
 Food food;
-} Cell;
+};
 
-typedef struct Board 
+struct Board 
 {
 unsigned int number_of_rows;
 unsigned int number_of_columns;
-Cell** 2D_cell_array;
-} Board;
+Cell** cell_array_2D;
+};
 
-Board populate_board(int seed);
+Board populate_board(unsigned int number_of_rows, unsigned int number_of_columns, unsigned int food_growing_rate, 
+unsigned int animal_grazing_rate);
 Board perform_step();
 void display_board(Board my_board);
 
