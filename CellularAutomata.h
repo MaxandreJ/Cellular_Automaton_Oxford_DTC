@@ -19,9 +19,8 @@ typedef struct Animal
 {
 unsigned int present;
 unsigned int alive;
-unsigned int breeding_rate;
-unsigned int eating_rate;
-unsigned int food_storage;
+unsigned int grazing_rate;
+unsigned int food_stored;
 Cell* grazing_area;
 Cell* breeding_area;
 } Animal;
@@ -45,5 +44,6 @@ Cell** 2D_cell_array;
 
 Board populate_board(int seed);
 Board perform_step();
+void display_board(Board my_board);
 
 #endif
