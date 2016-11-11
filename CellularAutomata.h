@@ -26,7 +26,6 @@ unsigned int food_stored;
 unsigned int number_of_grazing_area_positions;
 unsigned int number_of_breeding_area_positions;
 int step_of_birth;
-
 Position grazing_area_positions[9];
 Position breeding_area_positions[4];
 Position position;
@@ -57,8 +56,7 @@ int number_of_animals;
 
 Board perform_step(Board my_board, int animal_grazing_rate, int step_number, int verbose_flag_chosen);
 void display_board(Board my_board);
-Board populate_board(unsigned int number_of_rows, unsigned int number_of_columns, unsigned int food_growing_rate,
+Board construct_board(unsigned int number_of_rows, unsigned int number_of_columns, unsigned int food_growing_rate,
 unsigned int animal_grazing_rate);
-//Board remove_dead_animal_positions(Board my_board, int animal_number);
 
 #endif

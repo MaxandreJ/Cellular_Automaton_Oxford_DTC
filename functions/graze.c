@@ -4,6 +4,9 @@
 
 Board graze(Board my_board, Animal my_animal)
 {
+  //An animal grazes (eats) in all adjacent cells (at most 1 cell away,
+  //including diagonals) on the board.
+
 	Cell my_grazed_cell;
 	int number_position_grazing_area;
 	int my_grazed_cell_row;

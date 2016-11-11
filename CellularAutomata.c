@@ -18,6 +18,7 @@ int main(int argc, char *argv[])
 	int verbose_flag_chosen;
 
 
+	///Getting arguments from the command line
 
 	if(argc == 5)
 	{
@@ -48,11 +49,12 @@ int main(int argc, char *argv[])
 	verbose_flag_chosen = 0;
 
 
-	my_board = populate_board(number_of_rows, number_of_columns, food_growing_rate, animal_grazing_rate);
+	my_board = construct_board(number_of_rows, number_of_columns, food_growing_rate, animal_grazing_rate);
 
 	printf("\nInitial board.\n");
 	display_board(my_board);
 
+	///Iterating until stopped by the user (Ctrl-C)
 	while(1)
 	{
 		printf("\n=== Step number %d ===\n", step_number);
@@ -66,7 +68,10 @@ int main(int argc, char *argv[])
 		step_number++;
 	}
 
-	//Not exception safe
+	///I remember to free the memory allocated in the heap.
+	///Nevertheless, the code is not exception safe...
+	///C doesn't seem very user-friendly for handling exceptions
+	///What a surprise
 	free(my_board.cell_array_2D);
 	free(my_board.food_positions);
 	free(verbose_flag);

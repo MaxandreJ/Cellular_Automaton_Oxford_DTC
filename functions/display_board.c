@@ -4,6 +4,15 @@
 
 void display_board(Board my_board)
 {
+  //Displays the board.
+  //Green cells are for food, red cells for animals, yellow cells for animals + food.
+  //If green, the number displayed corresponds to the quantity of food available
+  //in that cell.
+  //If red, the number displayed corresponds to the quantity of food stored by
+  //the animal in that cell.
+  //If yellow, the number displayed corresponds to the quantity of food stored
+  //by the animal in that cell.
+
 int row_number;
 int column_number;
 Cell my_cell;

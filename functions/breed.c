@@ -4,6 +4,9 @@
 
 Board breed(Board my_board, Animal my_animal, int animal_grazing_rate, int step_number)
 {
+  //An animal breeds in adjacent cells (at most 1 cell away, excluding diagonals)
+  //on the board.
+
   Cell my_bred_cell;
   int number_position_breeding_area;
   int my_bred_cell_row;
@@ -20,6 +23,7 @@ Board breed(Board my_board, Animal my_animal, int animal_grazing_rate, int step_
 
       my_bred_cell = my_board.cell_array_2D[my_bred_cell_row][my_bred_cell_column];
 
+      //An animal can breed on a cell only if an animal is not already present
       if (!my_bred_cell.animal.present)
       {
         my_board = construct_animal(my_board, my_bred_cell_row, my_bred_cell_column,

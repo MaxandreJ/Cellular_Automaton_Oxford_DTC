@@ -4,6 +4,8 @@
 
 Board perform_step(Board my_board, int animal_grazing_rate, int step_number, int verbose_flag_chosen)
 {
+  //A step of the game is performed.
+  
 	int number_of_animals;
 	int amount_of_food;
   int row_number;

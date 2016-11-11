@@ -1,0 +1,14 @@
+% Encoding: ISO-8859-1
+
+@Article{wolfram1983statistical,
+  author    = {Wolfram, Stephen},
+  title     = {Statistical mechanics of cellular automata},
+  year      = {1983},
+  volume    = {55},
+  number    = {3},
+  pages     = {601},
+  journal   = {Reviews of modern physics},
+  publisher = {APS},
+}
+
+@Comment{jabref-meta: databaseType:biblatex;}
