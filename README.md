@@ -25,5 +25,8 @@ If you want to know more about the elements that are interacting, you can use th
 
 ##Display
 
-Green cells represent where food is, red cells: animals, yellow cells: animals and food. If a cell is green, the number displayed in black corresponds to the quantity of food available in the cell. If a cell is red, the number displayed in black corresponds to the quantity of food stored by the animal in that cell. If a cell is yellow the number displayed in red corresponds to the quantity of food stored by the animal in that cell (in that case, the quantity of food stored in the cell is not displayed).
+Green cells represent where food is, red cells: animals, yellow cells: animals and food. 
+If a cell is green, the number displayed in black corresponds to the quantity of food available in the cell. 
+If a cell is red, the number displayed in black corresponds to the quantity of food stored by the animal in that cell. 
+If a cell is yellow the number displayed in red corresponds to the quantity of food stored by the animal in that cell (in that case, the quantity of food stored in the cell is not displayed).
 
