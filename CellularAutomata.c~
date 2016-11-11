@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "CellularAutomata.h"
-/* 
+/*
    Cellular automata by Maxandre Jacqueline
 */
 
@@ -28,16 +28,16 @@ int main(int argc, char *argv[])
 	}
 
 	my_board = populate_board(number_of_rows, number_of_columns, food_growing_rate, animal_grazing_rate);
-	
-	
+
+
 	while(1)
 	{
 		display_board(my_board);
 		//To pause the programme
 		getchar();
 		my_board = perform_step(my_board);
-	}	
-	
+	}
+
 
 	free(my_board.cell_array_2D);
 	free(my_board.animal_positions);
@@ -45,7 +45,7 @@ int main(int argc, char *argv[])
 	return 0;
 }
 
-Board populate_board(unsigned int number_of_rows, unsigned int number_of_columns, unsigned int food_growing_rate, 
+Board populate_board(unsigned int number_of_rows, unsigned int number_of_columns, unsigned int food_growing_rate,
 unsigned int animal_grazing_rate)
 {
 	int row_number;
@@ -64,13 +64,13 @@ unsigned int animal_grazing_rate)
 	int breeding_position_counter;
 	my_board.number_of_rows = number_of_rows;
 	my_board.number_of_columns = number_of_columns;
-	
+
 	my_board.cell_array_2D = malloc(sizeof(Cell*)*my_board.number_of_rows);
 
 	// Not optimal but implementing upper bound would be too much work
 	my_board.food_positions = malloc(sizeof(Position)*(my_board.number_of_rows*my_board.number_of_columns));
 	my_board.animal_positions = malloc(sizeof(Position)*(my_board.number_of_rows*my_board.number_of_columns));
-	
+
 	for (row_number=0;row_number<number_of_rows;row_number++)
 	{
 		my_board.cell_array_2D[row_number]=malloc(sizeof(Cell)*my_board.number_of_columns);
@@ -79,7 +79,7 @@ unsigned int animal_grazing_rate)
 			my_cell = my_board.cell_array_2D[row_number][column_number];
 			my_cell.position.row = row_number;
 			my_cell.position.column = column_number;
-			
+
 			//Food set-up
 			my_food = my_cell.food;
 			//We put food only in cells that have an even position.row and even position.column
@@ -93,10 +93,10 @@ unsigned int animal_grazing_rate)
 			//}
 			//else
 			//my_food.quantity = 0;
-			
+
 
 			my_food.growing_rate = food_growing_rate;
-			
+
 			//No animal except the one defined after the loops
 			my_animal = my_cell.animal;
 
@@ -105,7 +105,7 @@ unsigned int animal_grazing_rate)
 			my_cell.animal = my_animal;
 			my_cell.food = my_food;
 			my_board.cell_array_2D[row_number][column_number] = my_cell;
-					
+
 		}
 	}
 
@@ -130,15 +130,15 @@ unsigned int animal_grazing_rate)
 				//printf("animal_position_counter %d\n",animal_position_counter);
 				//printf("row_offset %d\n",row_offset);
 				//printf("column_offset %d\n",column_offset);
-				my_animal.grazing_area_positions[animal_position_counter].row = animal_position_row + row_offset; 
+				my_animal.grazing_area_positions[animal_position_counter].row = animal_position_row + row_offset;
 				my_animal.grazing_area_positions[animal_position_counter].column = animal_position_column + column_offset;
 				animal_position_counter++;
 				}
 		}
 
-	
-	//down 
-	/*my_animal.grazing_area_positions[0].row = (number_of_rows / 2) + 1; 
+
+	//down
+	/*my_animal.grazing_area_positions[0].row = (number_of_rows / 2) + 1;
 	my_animal.grazing_area_positions[0].column = number_of_columns / 2;
 	my_animal.grazing_area_positions[1] = my_board.cell_array_2D[(number_of_rows / 2) - 1][number_of_columns / 2]; //up
 	my_animal.grazing_area_positions[2] = my_board.cell_array_2D[(number_of_rows / 2)][(number_of_columns / 2) + 1]; //right
@@ -147,9 +147,9 @@ unsigned int animal_grazing_rate)
 	my_animal.grazing_area_positions[5] = my_board.cell_array_2D[(number_of_rows / 2) - 1][(number_of_columns / 2) + 1]; //top-right hand corner
 	my_animal.grazing_area_positions[6] = my_board.cell_array_2D[(number_of_rows / 2) + 1][(number_of_columns / 2) - 1]; //bottom-left hand corner
 	my_animal.grazing_area_positions[7] = my_board.cell_array_2D[(number_of_rows / 2) + 1][(number_of_columns / 2) + 1]; //bottom-right hand corner */
-	
+
 	breeding_position_counter = 0;
-	
+
 	for (row_offset = -1 ;row_offset<=1;row_offset++)
 	{
 		for (column_offset = -1 ;column_offset<=1;column_offset++)
@@ -158,14 +158,14 @@ unsigned int animal_grazing_rate)
 				if (((row_offset == 0) || (column_offset == 0)) && (!((row_offset == 0) && (column_offset == 0))))
 				{
 					//printf("%d\n",breeding_position_counter);
-					my_animal.breeding_area_positions[breeding_position_counter].row = animal_position_row + row_offset; 
+					my_animal.breeding_area_positions[breeding_position_counter].row = animal_position_row + row_offset;
 					my_animal.breeding_area_positions[breeding_position_counter].column = animal_position_column + column_offset;
 					breeding_position_counter++;
 				}
 			}
 	}
 
-	
+
 
 	/*
 	my_animal.breeding_area[1] = my_board.cell_array_2D[(number_of_rows / 2) - 1][number_of_columns / 2]; //up
@@ -179,7 +179,7 @@ unsigned int animal_grazing_rate)
 	my_board.animal_positions[0].column = number_of_columns / 2;
 
 	return my_board;
-		 
+
 }
 
 void display_board(Board my_board)
@@ -204,7 +204,7 @@ for (row_number=0;row_number<my_board.number_of_rows;row_number++)
 			//If animal and food present, we display the cell in yellow and only the animal food storage
 			//Red character on a yellow background
 			printf("\x1b[0;31;43m%3d",my_animal.food_stored);
-			
+
 		}
 		else if (my_animal.present == 1)
 		{
@@ -235,7 +235,6 @@ Board perform_step(Board my_board)
 {
 	int number_of_animals;
 	int amount_of_food;
-	int animal_number;
 	Animal my_animal;
 	Position my_animal_position;
 
@@ -263,14 +262,14 @@ Board graze(Board my_board, Animal my_animal)
 	int number_position_grazing_area;
 	int my_grazed_cell_row;
 	int my_grazed_cell_column;
-	
+
 	for(number_position_grazing_area=0;number_position_grazing_area<9;number_position_grazing_area++)
 	{
 		my_grazed_cell_row = my_animal.grazing_area_positions[number_position_grazing_area].row;
 		my_grazed_cell_column = my_animal.grazing_area_positions[number_position_grazing_area].column;
 
 		my_grazed_cell = my_board.cell_array_2D[my_grazed_cell_row][my_grazed_cell_column];
-		
+
 		if(my_grazed_cell.food.quantity >= my_animal.grazing_rate)
 		{
 		//Reducing the amount of food in the cell
@@ -289,7 +288,7 @@ Board graze(Board my_board, Animal my_animal)
 			else
 			my_animal.food_stored = 100;
 			my_grazed_cell.food.quantity = 0;
-			
+
 		}
 
 		// I'm passing variables by value so I need to do lots of copying
@@ -320,7 +319,7 @@ Board live(Board my_board, Animal my_animal, int animal_number, int number_of_an
 Board remove_dead_animal_positions(Board my_board, int animal_number, int number_of_animals)
 {
 	int loop_counter;
-	for(loop_counter = animal_number; loop_counter < number_of_animals - 1; loop_counter++) 
+	for(loop_counter = animal_number; loop_counter < number_of_animals - 1; loop_counter++)
 	my_board.animal_positions[loop_counter] = my_board.animal_positions[loop_counter + 1];
 
 	return(my_board);
@@ -346,7 +345,3 @@ for (food_number=0; food_number < amount_of_food; food_number++)
 return(my_board);
 
 };
-
-
-
-
