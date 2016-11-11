@@ -40,6 +40,7 @@ int main(int argc, char *argv[])
 	{
 	printf("Wrong number of arguments. They should be given in the following order:\n"
 	"number_of_rows number_of_columns food_growing_rate animal_grazing_rate (--verbose)\n");
+	//If the wrong number of argument is given, exit.
 	return(1);
 	}
 	//Awkward, should've used a library for arg_parse
@@ -59,19 +60,21 @@ int main(int argc, char *argv[])
 	{
 		printf("\n=== Step number %d ===\n", step_number);
 		my_board = perform_step(my_board, animal_grazing_rate, step_number, verbose_flag_chosen);
-		//To pause the programme
+		//If verbose_flag_chosen, perform_step will do the displaying. Otherwise
+		//it will be up to main.
 		if (!verbose_flag_chosen)
 		{
 			display_board(my_board);
 		}
+		//To pause the programme
 		getchar();
 		step_number++;
 	}
 
 	///I remember to free the memory allocated in the heap.
 	///Nevertheless, the code is not exception safe...
-	///C doesn't seem very user-friendly for handling exceptions
-	///What a surprise
+	///C doesn't seem very user-friendly for handling exceptions.
+	///What a surprise.
 	free(my_board.cell_array_2D);
 	free(my_board.food_positions);
 	free(verbose_flag);

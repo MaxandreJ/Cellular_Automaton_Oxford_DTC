@@ -5,7 +5,8 @@
 Board construct_animal(Board my_board, int animal_position_row, int animal_position_column,
   int animal_grazing_rate, int step_number)
 {
-  //Constructor for an animal.
+  //Constructor for an animal. Returns a board with an added animal (so it is
+  //not exactly a constructor, but that'll do).
 
   Animal my_animal;
   int row_offset;
@@ -13,6 +14,7 @@ Board construct_animal(Board my_board, int animal_position_row, int animal_posit
   int breeding_position_counter = 0;
   int grazing_position_counter = 0;
   int position_within_borders;
+  int up_down_left_xor_right;
 
   Cell my_cell_with_animal;
 
@@ -24,6 +26,7 @@ Board construct_animal(Board my_board, int animal_position_row, int animal_posit
   my_animal.present = 1;
   my_animal.alive = 1;
   my_animal.grazing_rate = animal_grazing_rate;
+  //my_animal.food_stored is equivalent to its "health points" (HP).
   my_animal.food_stored = 100;
   my_animal.step_of_birth = step_number;
 
@@ -65,9 +68,10 @@ Board construct_animal(Board my_board, int animal_position_row, int animal_posit
         );
         if (position_within_borders)
         {
-          // Only up and down and left and right
-          if (((row_offset == 0) || (column_offset == 0)) &&
-          (!((row_offset == 0) && (column_offset == 0))))
+          up_down_left_xor_right = ((row_offset == 0) || (column_offset == 0)) &&
+          (!((row_offset == 0) && (column_offset == 0)));
+          // An animal can only breed up xor down xor left xor right
+          if (up_down_left_xor_right)
           {
             my_animal.breeding_area_positions[breeding_position_counter].row = animal_position_row + row_offset;
             my_animal.breeding_area_positions[breeding_position_counter].column = animal_position_column + column_offset;

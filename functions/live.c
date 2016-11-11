@@ -10,6 +10,7 @@ Board live(Board my_board, Animal my_animal)
   {
 	my_animal.food_stored -= 10;
   }
+  //If the animal food consumption exceeds the amount of food he stored, it dies.
 	else
 	{
 	my_animal.present = 0;

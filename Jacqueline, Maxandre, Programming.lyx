@@ -33,7 +33,7 @@
 \spacing single
 \use_hyperref false
 \papersize default
-\use_geometry false
+\use_geometry true
 \use_package amsmath 1
 \use_package amssymb 1
 \use_package cancel 1
@@ -57,6 +57,10 @@
 \shortcut idx
 \color #008000
 \end_index
+\leftmargin 10page%
+\topmargin 10pheight%
+\rightmargin 10page%
+\bottommargin 10pheight%
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation indent
@@ -75,7 +79,11 @@
 \begin_body
 
 \begin_layout Title
-Cellular Automata
+Cellular Automata 
+\begin_inset Newline newline
+\end_inset
+
+(implemented in C)
 \end_layout
 
 \begin_layout Author
@@ -88,6 +96,26 @@ Maxandre Jacqueline,
 
 \begin_layout Part
 Introduction
+\end_layout
+
+\begin_layout Quotation
+\begin_inset Quotes eld
+\end_inset
+
+Cellular automata are [...] idealizations of physical systems in which space
+ and time are discrete, and physical quantities take on a finite set of
+ discrete values.
+\begin_inset Quotes erd
+\end_inset
+
+ Stephen Wolfram 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "wolfram1983statistical"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Part
@@ -105,11 +133,18 @@ al equations].
 \begin_inset Quotes erd
 \end_inset
 
- Stephen Wolfram
+ Stephen Wolfram 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "wolfram1983statistical"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-dfdf
+Talk about intrinsic deterministic randomness
 \end_layout
 
 \begin_layout Part
@@ -118,6 +153,536 @@ Scientific History
 
 \begin_layout Part
 My Proposition
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/argument_ligne_de_commande_5_5.png
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+A 5x5 grid has been created, following the first two arguments given to
+ the programme.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename figures/argument_ligne_de_commande_10_10.png
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+A 10x10 grid has been created, following the first two arguments given to
+ the programme.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Arguments can be passed when calling the programme in the command line.
+\end_layout
+
+\end_inset
+
+Arguments can be passed when calling the programme in the command line.
+ For example, you can make the grid small (sub-figure a), or big (sub-figure
+ b).
+ Arguments are the following (in this order): number_of_rows, number_of_columns,
+ food_growing_rate, animal_grazing_rate, (--verbose).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centerline{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/solution_laconique.png
+	scale 35
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Default mode.
+ Little information is given but one can see quickly the overall changes.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centerline{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/solution_verbose.png
+	scale 35
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Verbose mode.
+ Detailed information is given but it's hard to see the overall changes.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Comparison between the default and the verbose mode.
+\end_layout
+
+\end_inset
+
+Comparison between the default (sub-figure a) and the verbose (sub-figure
+ b) mode.
+ 
+\begin_inset Newline newline
+\end_inset
+
+All displays were done on the terminal (also known as 
+\begin_inset Quotes eld
+\end_inset
+
+ASCII art
+\begin_inset Quotes erd
+\end_inset
+
+).
+ Green cells represent where food is, red cells: animals, yellow cells:
+ animals and food.
+ If a cell is green, the number displayed in black corresponds to the quantity
+ of food available in the cell.
+ If a cell is red, the number displayed in black corresponds to the quantity
+ of food stored by the animal in that cell.
+ If a cell is yellow the number displayed in red corresponds to the quantity
+ of food stored by the animal in that cell (in that case, the quantity of
+ food stored in the cell is not displayed).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centerline{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/Abstract class diagram - Page 1 (2).png
+	lyxscale 40
+	scale 30
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Abstract class (data structure) diagram.
+\end_layout
+
+\end_inset
+
+Abstract class (data structure) diagram.
+ I implemented it using type definitions and structures in a header file.
+ I did not try to implement any methods because C is not an object-oriented
+ language.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centerline{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figures/Sequence Diagram - Page 1 (1).png
+	lyxscale 50
+	scale 20
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Abstract sequence diagram.
+\end_layout
+
+\end_inset
+
+ Abstract sequence diagram.
+ I implemented it separating each function in a different file, and using
+ a header file to link them together.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Part*
+Appendix: C Code
+\end_layout
+
+\begin_layout Section*
+CellularAutomata.h
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=C,numbers=left,breaklines=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+#ifndef CELLULAR_AUTOMATA #define CELLULAR_AUTOMATA
+\end_layout
+
+\begin_layout Plain Layout
+
+typedef struct Position { int row; int column; } Position;
+\end_layout
+
+\begin_layout Plain Layout
+
+typedef struct Food { unsigned int quantity; int growing_rate; } Food;
+\end_layout
+
+\begin_layout Plain Layout
+
+typedef struct Board Board;
+\end_layout
+
+\begin_layout Plain Layout
+
+Board grow_food(Board my_board);
+\end_layout
+
+\begin_layout Plain Layout
+
+typedef struct Animal { unsigned int present; unsigned int alive; unsigned
+ int grazing_rate; unsigned int food_stored; unsigned int number_of_grazing_area
+_positions; unsigned int number_of_breeding_area_positions; int step_of_birth;
+ Position grazing_area_positions[9]; Position breeding_area_positions[4];
+ Position position; } Animal;
+\end_layout
+
+\begin_layout Plain Layout
+
+Board construct_animal(Board my_board, int animal_position_row, int animal_posit
+ion_column,   int animal_grazing_rate, int step_number); Board graze(Board
+ my_board, Animal my_animal); Board live(Board my_board, Animal my_animal);
+ Board breed(Board my_board, Animal my_animal, int animal_grazing_rate,
+ int step_number);
+\end_layout
+
+\begin_layout Plain Layout
+
+typedef struct Cell { Position position; Animal animal; Food food; } Cell;
+\end_layout
+
+\begin_layout Plain Layout
+
+struct Board { unsigned int number_of_rows; unsigned int number_of_columns;
+ Cell** cell_array_2D; Position* food_positions; int amount_of_food; int
+ number_of_animals; };
+\end_layout
+
+\begin_layout Plain Layout
+
+Board perform_step(Board my_board, int animal_grazing_rate, int step_number,
+ int verbose_flag_chosen); void display_board(Board my_board); Board construct_b
+oard(unsigned int number_of_rows, unsigned int number_of_columns, unsigned
+ int food_growing_rate, unsigned int animal_grazing_rate);
+\end_layout
+
+\begin_layout Plain Layout
+
+#endif 
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "biblio_cellular_automaton"
+options "plain"
+
+\end_inset
+
+
 \end_layout
 
 \end_body

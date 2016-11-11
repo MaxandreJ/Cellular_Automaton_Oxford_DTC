@@ -11,7 +11,8 @@ void display_board(Board my_board)
   //If red, the number displayed corresponds to the quantity of food stored by
   //the animal in that cell.
   //If yellow, the number displayed corresponds to the quantity of food stored
-  //by the animal in that cell.
+  //by the animal in that cell (in that case, the quantity of food stored in the cell
+  //is not displayed).
 
 int row_number;
 int column_number;
