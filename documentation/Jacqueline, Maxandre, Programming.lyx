@@ -616,7 +616,7 @@ Arguments can be passed when calling the programme in the command line.
  For example, you can make the grid small (sub-figure a), or big (sub-figure
  b).
  Arguments are the following (in this order): number_of_rows, number_of_columns,
- food_growing_rate, animal_grazing_rate, (--verbose).
+ food_growing_rate, animal_grazing_rate, (–verbose).
  
 \begin_inset CommandInset label
 LatexCommand label
@@ -1967,7 +1967,7 @@ oard);       }
 \begin_layout Standard
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
-bibfiles "biblio_cellular_automaton"
+bibfiles "documentation/biblio_cellular_automaton"
 options "plain"
 
 \end_inset
