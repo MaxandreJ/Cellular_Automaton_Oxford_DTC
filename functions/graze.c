@@ -12,10 +12,13 @@ Board graze(Board my_board, Animal my_animal)
 	int my_grazed_cell_row;
 	int my_grazed_cell_column;
 
-	for(number_position_grazing_area=0;number_position_grazing_area<9;number_position_grazing_area++)
+	for(number_position_grazing_area=0;
+    number_position_grazing_area<my_animal.number_of_grazing_area_positions;
+    number_position_grazing_area++)
 	{
 		my_grazed_cell_row = my_animal.grazing_area_positions[number_position_grazing_area].row;
 		my_grazed_cell_column = my_animal.grazing_area_positions[number_position_grazing_area].column;
+
 
 		my_grazed_cell = my_board.cell_array_2D[my_grazed_cell_row][my_grazed_cell_column];
 
